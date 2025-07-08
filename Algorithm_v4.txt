@@ -42,7 +42,14 @@ function Algorithm1(h, p, n, s)
                 // --- else: proceed with the remaining conditions
                 else 
                     // setup 3 for Theorem 17
-                    K<b>:=ext<F|g>;
+                    if (p mod 3) eq 1 then
+                        K<b>:=ext<F|g>;
+                    elif (p mod 3) eq 2 then
+                        R:=IntegerRing();
+                        R_pol<i>:=PolynomialRing(R);
+                        g2:=i^2+3;
+                        K<b>:=ext<F|g,g2>;
+                    end if;
                     square_check_obj:= -4*b1^3-27*(b0-b)^2;
 
                     // check Condition 1 of Theorem 17
