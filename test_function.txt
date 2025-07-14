@@ -1,0 +1,21 @@
+function TestAllP(p, n, s)
+    F:=FiniteField(p^s);
+    S<x>:=PolynomialRing(F);
+    n:=p^s-1;
+    for f in [x^3 + b*x + c : b in [0..n], c in [0..n]] do
+        // f;
+        Algorithm1(f, p, n, s);
+    end for;
+    return "end";
+end function;
+
+function TestAllPGen(p, n, s)
+    F:=FiniteField(p^s);
+    S<x>:=PolynomialRing(F);
+    n:=p^s-1;
+    for f in [a*x^3 + b*x^2 + c*x + d : a in [1..n], b in [0..n], c in [0..n], d in [0..n]] do
+        // f;
+        Algorithm1(f, p, n, s);
+    end for;
+    return "end";
+end function;

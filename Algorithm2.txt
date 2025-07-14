@@ -1,0 +1,47 @@
+// Takes in: polynomial f = ax^3+bx^2+cx+d, prime p, number of iterates n, index s of p
+// Returns: true if f is dynamically irreducible, otherwise returns false and the number of iterate where it fails to be
+
+function Algorithm2(f, p, n, s)
+    // Setup
+    F:=FiniteField(p^s);
+    P<x>:=PolynomialRing(F);
+    // Assign the lead coefficient and coefficient of x^2 
+    // to corresponding variables - a_3 and a_2
+    a_3:=Coefficient(f, 3);
+    a_2:=Coefficient(f, 2);
+    // Check if a_3 = 1 and a_2 = 0 (if f has form x^3 + a_1x + a_0)
+    // If true:
+    if ((a_3 eq 1) and (a_2 eq 0)) eq true then
+        // use Algorithm1
+        return Algorithm1(f, p, n, s);
+    // Else (if a_3 != 1 or a_2 != 0):
+    else 
+        // Perform conjugation: f -> h = b_3x^3 + b_1x + b_0
+        /*
+        v:=a_2/(3*a_3);
+        h:=Evaluate(f,(x-v));
+        */
+        // or
+        a_1:=Coefficient(f, 1);
+        a_0:=Coefficient(f, 0);
+        b_3:=a_3;
+        b_1:=a_1-(a_2/(3*a_3));
+        b_0:=a_0+((2*a_2^3-9*a_3*a_2*(a_1-1))/(27*a_3^2));
+        h:=b_3*x+b_1*x+b_0;
+
+        // Check if b_3 is a square 
+        // Setup 
+        S:=SquareList(p^s);
+        // If true: 
+        if IsSquareFp(b_3, S) eq true then
+            // Perform conjugation: h -> g=c*h(x/c)
+            c:=Sqrt(a_3);
+            g:=x^3+b_1*x+c*b_0;
+            return Algorithm1(g, p, n, s);
+        // Else:
+        else
+            // Apply conditions of Proposition 2
+            return Algorithm1(h, p, n, s);
+        end if;
+    end if;
+end function;
