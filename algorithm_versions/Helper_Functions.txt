@@ -1,0 +1,46 @@
+// Helper functions used in Algorithm1v4.
+
+// Takes in a prime p and returns a list of squares in Fp
+function SquareList(p)
+    F:=FiniteField(p);
+    Z:=[];
+    for x in F do
+        s:=x^2;
+        if s notin Z then
+            Z:=Append(Z,s);
+        end if;
+    end for;
+    return Z;
+end function;
+
+// Takes in an integer n and a list of squares S and check if n is in S
+function IsSquareFp(n, S)
+    if n in S then
+        return true;
+    else 
+        return false;
+    end if;
+end function;
+
+// Takes in a prime p and returns a list of cubes in Fp
+function CubeList(p)
+    F:=FiniteField(p);
+    Z:=[];
+    for x in F do
+        c:=x^3;
+        if c notin Z then
+            Z:=Append(Z,c);
+        end if;
+    end for;
+    return Z;
+end function;
+
+// Takes in an integer n and a list of cubes C and check if n is in C
+function IsCubeFp(n, C)
+    if n in C then
+        return true;
+    else
+        return false;
+    end if;
+end function;
+
