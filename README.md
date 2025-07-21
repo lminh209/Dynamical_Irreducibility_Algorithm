@@ -18,9 +18,21 @@ If you have installed Magma, follow these steps to use the algorithm:
 2. Open Magma, then load the previously downloaded files into Magma in this order: Helper_Functions.txt -> Algorithm1_v4.txt -> Algorithm2_v2.txt,
    using this command:
     ```
-    load "filepath"; \\ paste the filepath for the file you want to load in between the quotation marks
+    load "filepath"; // paste the filepath for the file you want to load in between the quotation marks
    ```
 The algorithm should now be ready to use. You can test it out on creating a polynomial of your choice.
+
+**Example:**
+
+```
+// Create polynomial over finite field of order 7
+F:=FiniteField(7);
+P<x>:=PolynomialRing(F);
+f:=x^3+2*x^2+x+1;
+
+// Check if polynomial f is dynamically irreducible over 5 iterations
+Algorithm2(f, 7, 5, 1);
+```
 
 ## Reflections
 
