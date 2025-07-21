@@ -2,11 +2,11 @@
 
 ## Description
 
+**Tech used:** Magma
+
 This algorithm was developed as part of the research project on Dynamical Irreducibiilty of Polynomials over Finite Fields at Mount Holyoke College, done under the mentorship of Professor Tori Day. 
 
 It is used for determining if a cubic polynomial of the form f(x)=ax^3+bx^2+cx+d is dynamically irreducible over a given finite field of order q (q being a prime or prime power), and is based on a Sage algorithm for determining the dynamically irreducibility of polynomials of the form f(x)=ax^3+cx+d (Day, Deland, Juul, Thomas, Thompson, Tobin).
-
-***Tech used:*** Magma
 
 ## Reflections
 
