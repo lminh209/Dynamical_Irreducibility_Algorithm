@@ -2,9 +2,9 @@
 
 ## Description
 
-This algorithm was developed as part of the research project on Dynamical Irreducibiilty of Polynomials over Finite Fields at Mount Holyoke College, done under the mentorship of Professor Tori Day.
+This algorithm was developed as part of the research project on Dynamical Irreducibiilty of Polynomials over Finite Fields at Mount Holyoke College, done under the mentorship of Professor Tori Day. 
 
-It is used for determining if a cubic polynomial of the form f(x)=a~3~x^3+a~2~x^2+a~1~x+a~0 is dynamically irreducible over a given finite field of order q (q being a prime or prime power).
+It is used for determining if a cubic polynomial of the form f(x)=ax^3+bx^2+cx+d is dynamically irreducible over a given finite field of order q (q being a prime or prime power), and is based on a Sage algorithm for determining the dynamically irreducibility of polynomials of the form f(x)=ax^3+cx+d (Day, Deland, Juul, Thomas, Thompson, Tobin).
 
 ***Tech used:*** Magma
 
@@ -19,3 +19,5 @@ The research process was a great learning opportunity. Beyond abstract algebra a
 I want to thank my mentor in this project, Professor Tori Day, for giving me the opportunity to be involved in this project. I learned a lot not from your knowledgeableness, enthusiasm and patience.
 
 ## Reference
+
+1. Tori Day, Rebecca Deland, Jamie Juul, Cigole Thomas, Bianca Thompson, and Bella Tobin, "Dynamical Irreducibility of Certain Families of Polynomials over Finite Fields" (2024). https://arxiv.org/abs/2409.10467.
