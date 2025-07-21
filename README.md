@@ -1,6 +1,6 @@
 # An Algorithm for Determining the Dynamical Irreducibility of Cubic Polynomials over Finite Fields
 
-## Description
+## Description/About
 
 **Tech used:** Magma
 
@@ -10,6 +10,18 @@ It is used for determining if a cubic polynomial of the form f(x)=ax^3+bx^2+cx+d
 
 ## Using the Algorithm
 
+If you haven't installed Magma on your computer, here is a guide for that: [Installation Instructions](https://magma.maths.usyd.edu.au/magma/faq/install)
+
+If you have installed Magma, follow these steps to use the algorithm:
+
+1. Download the file Helper_Functions.txt, Algorithm1_v4.txt and Algorithm2_v2.txt in the folder [algorithm_versions](https://github.com/lminh209/Algorithm1/tree/main/algorithm_versions).
+2. Open Magma, then load the previously downloaded files into Magma in this order: Helper_Functions.txt -> Algorithm1_v4.txt -> Algorithm2_v2.txt,
+   using this command:
+    ```
+    load "filepath"; \\ paste the filepath for the file you want to load in between the quotation marks
+   ```
+The algorithm should now be ready to use. You can test it out on creating a polynomial of your choice.
+
 ## Reflections
 
 Through this project, I was involved in math research for the first time - which led to a series of other first-times: learning Magma, presenting about out research at MHC math lunch, and finding out how fun math can be!
@@ -18,7 +30,7 @@ The research process was a great learning opportunity. Beyond abstract algebra a
 
 ## Acknowledgement
 
-I want to thank my mentor in this project, Professor Tori Day, for giving me the opportunity to be involved in this project. I learned a lot from your knowledgeableness, enthusiasm and patience.
+I want to thank my mentor, Professor Tori Day, for giving me the opportunity to be involved in this project. I learned a lot from your knowledgeableness, enthusiasm and patience.
 
 ## Reference
 
