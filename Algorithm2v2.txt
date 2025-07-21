@@ -1,0 +1,140 @@
+// Takes in: polynomial f = ax^3+bx^2+cx+d, prime p, number of iterates n, index s of p
+// Returns: true if f is dynamically irreducible, otherwise returns false and the number of iterate where it fails to be
+
+function Algorithm2(f, p, n, s)
+    // Setup
+    q:=p^s;
+    F:=FiniteField(q);
+    P<x>:=PolynomialRing(F);
+    // Assign the lead coefficient and coefficient of x^2 
+    // to corresponding variables - a_3 and a_2
+    a_3:=Coefficient(f, 3);
+    a_2:=Coefficient(f, 2);
+    // Check if a_3 = 1 and a_2 = 0 (if f has form x^3 + a_1x + a_0)
+    // If true:
+    if ((a_3 eq 1) and (a_2 eq 0)) eq true then
+        return Algorithm1v4(f, p, n, s);
+        
+    // Else change polynomial: f -> h = b_3x^3 + b_1x + b_0:
+    else 
+        a_1:=Coefficient(f, 1);
+        a_0:=Coefficient(f, 0);
+        b_3:=a_3;
+        b_1:=a_1-(a_2/(3*a_3));
+        b_0:=a_0+((2*a_2^3-9*a_3*a_2*(a_1-1))/(27*a_3^2));
+        h:=b_3*x^3+b_1*x+b_0;
+
+        // Check if b_3 is a square 
+        // Setup 
+        S:=SquareList(p^s); 
+        // If true: 
+        if IsSquareFp(b_3, S) eq true then
+            // Perform conjugation: h -> k=c*h(x/c)
+            c:=Sqrt(a_3);
+            k:=x^3+b_1*x+c*b_0;
+            return Algorithm1v4(k, p, n, s);
+        // Else:
+        else
+            g:=x;
+            if IsIrreducible(h) eq false then
+                return false, 1;
+            else
+                g:=Evaluate(h,g);
+                for i in [2..n] do
+                    // Apply conditions of Proposition 2
+                    // Setup
+                    beta_0:=F!0; 
+                    CP:=Roots(h);
+                    if #CP eq 2 then
+                        gamma1:=CP[1][1]; 
+                        gamma2:=CP[2][1];
+                    else
+                        if #CP eq 1 then
+                            if CP[1][2] eq 2 then
+                                gamma1:=CP[1][1];
+                                gamma2:=gamma1;
+                            else
+                                F<a>:=ext<F|h>; 
+                                CP:=Roots(h);
+                                if #CP eq 2 then
+                                    gamma1:=CP[1][1];
+                                    gamma2:=CP[2][1];
+                                elif #CP eq 1 then
+                                    if CP[1][2] eq 2 then
+                                        gamma1:=CP[1][1];
+                                        gamma2:=gamma1;
+                                    end if;
+                                end if;
+                            end if;
+                        end if;
+                    end if;
+                    if (q mod 3) eq 1 then
+                        K<b>:=ext<F|g>;
+                        m_3:=F!-3;
+                        sqrt_minus_3:=Sqrt(m_3);
+                        g_nextit:=Evaluate(h,g); // find (i+1)-th iterate
+                        // Check Condition 1
+                        g_nextit1:=Evaluate(g_nextit,gamma1);
+                        g_nextit2:=Evaluate(g_nextit,gamma2);
+                        cond1_square_check_obj:=-3*g_nextit1*g_nextit2;
+                        // setup for check
+                        S:=SquareList(q);
+                        if (IsSquareFp(cond1_square_check_obj,S) eq true) and (cond1_square_check_obj ne 0) then
+                            // Check Condition 2
+                            mu:=Sqrt((-4*(b_1/b_3)^3-27*((b_0-b)/b_3)^2)/81);
+                            cube_check_obj:=(1/2)*(-((b_0-b)/b_3)+mu*sqrt_minus_3);
+                            // extend K and generate list of cubes in K
+                            Cb:=[];
+                            for j in K do
+                                c:=j^3;
+                                Cb:=Append(Cb,c);
+                            end for;
+                            if cube_check_obj notin Cb then
+                                g:=Evaluate(h,g);
+                            else
+                                return false, i;
+                            end if;
+                        else
+                            return false, i;
+                        end if;
+                        
+                    elif (q mod 3) eq 2 then
+                        l:=x^2+3;
+                        K<b>:=ext<F|g>;
+                        K<c>:=ext<K|l>;
+                        sqrt_minus_3:=c;
+                        // Check Condition 1
+                        beta_0:=F!0; 
+                        CP:=Roots(h);
+                        gamma1:=CP[1][1]; 
+                        gamma2:=CP[2][1];
+                        g_nextit:=Evaluate(h,g); // find (i+1)-th iterate
+                        g_nextit1:=Evaluate(g_nextit,gamma1);
+                        g_nextit2:=Evaluate(g_nextit,gamma2);
+                        cond1_square_check_obj:=-3*g_nextit1*g_nextit2;
+                        // setup for check
+                        S:=SquareList(q);
+                        if (IsSquareFp(cond1_square_check_obj,S) eq true) and (cond1_square_check_obj ne 0) then
+                        // Check Condition 2
+                            mu:=Sqrt((-4*(b_1/b_3)^3-27*((b_0-b)/b_3)^2)/81);
+                            cube_check_obj:=(1/2)*(-((b_0-b)/b_3)+mu*sqrt_minus_3);
+                            Cb:=[];
+                            for j in K do
+                                c:=j^3;
+                                Cb:=Append(Cb,c);
+                            end for;
+                            if cube_check_obj notin Cb then
+                                g:=Evaluate(h,g);
+                            else
+                                return false, i;
+                            end if;
+                        else
+                            return false, i;
+                        end if;
+                    end if; 
+                end for;
+                return true;                   
+            end if;
+        end if;
+    end if;
+end function;

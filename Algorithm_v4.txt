@@ -4,7 +4,7 @@
 //  (1) add case for polynomials with derivatives with non-distinct roots 
 //  (2) add case for p = 2 mod 3
 
-function Algorithm1(h, p, n, s) 
+function Algorithm1v4(h, p, n, s) 
     // setup 1
     q:=p^s;
     h_der:=Derivative(h);
@@ -83,6 +83,37 @@ function Algorithm1(h, p, n, s)
                             break;
                         end if;
                     else 
+                        return false, i;
+                        break;
+                    end if;
+                end if;
+            else
+                // setup 3 for Theorem 17
+                if (q mod 3) eq 1 then
+                    K<b>:=ext<F|g>;
+                    m_3:=F!-3;
+                    sqrt_minus_3:=Sqrt(m_3);
+                elif (q mod 3) eq 2 then
+                    // R:=IntegerRing();
+                    // R_pol<i>:=PolynomialRing(R);
+                    // l:=i^2+3;
+                    l:=x^2+3;
+                    K<b>:=ext<F|g>;
+                    K<c>:=ext<K|l>;
+                    sqrt_minus_3:=c;
+                end if;
+                square_check_obj:= -4*(b1/b3)^3-27*((b0-b)/b3)^2;
+
+                // check Condition 1 of Theorem 17
+                if IsSquareFp(Norm(square_check_obj), S) eq true then
+                    mu:=SquareRoot(square_check_obj/81);
+                    cube_check_obj:=(1/2)*(-((b0-b)/b3)+mu*sqrt_minus_3);
+
+                    // check Condition 2 of Proposition 2
+                    if IsCubeFp(Norm(cube_check_obj), C) eq false then
+                    g:=Evaluate(h,g);
+                        count:=count+1;
+                    else
                         return false, i;
                         break;
                     end if;

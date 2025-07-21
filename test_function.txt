@@ -1,10 +1,15 @@
+load "/Users/leducanhminh/Desktop/ResearchProjectWithTori/Week 4/Helper_Functions.txt";
+load "/Users/leducanhminh/Desktop/ResearchProjectWithTori/Week 6-7/Algorithm1/Algorithm_v4.txt";
+load "/Users/leducanhminh/Desktop/ResearchProjectWithTori/Week 6-7/Algorithm1/Algorithm2v2.txt";
+
 function TestAllP(p, n, s)
     F:=FiniteField(p^s);
     S<x>:=PolynomialRing(F);
-    n:=p^s-1;
-    for f in [x^3 + b*x + c : b in [0..n], c in [0..n]] do
+    w:=p^s-1;
+    for f in [x^3 + b*x + c : b in [0..w], c in [0..w]] do
         // f;
-        Algorithm1(f, p, n, s);
+        // Algorithm1v4(f, p, n, s);
+        Algorithm2(f, p, n, s);
     end for;
     return "end";
 end function;
@@ -12,10 +17,26 @@ end function;
 function TestAllPGen(p, n, s)
     F:=FiniteField(p^s);
     S<x>:=PolynomialRing(F);
-    n:=p^s-1;
-    for f in [a*x^3 + b*x^2 + c*x + d : a in [1..n], b in [0..n], c in [0..n], d in [0..n]] do
+    w:=p^s-1;
+    w2:=p-1;
+    for f in [a*x^3 + b*x^2 + c*x + d : a in [1..w2], b in [0..w], c in [0..w], d in [0..w]] do
         // f;
-        Algorithm1(f, p, n, s);
+        Algorithm2(f, p, n, s);
     end for;
     return "end";
+end function;
+
+function DI_TestAllPGen(p, n, s)
+    F:=FiniteField(p^s);
+    S<x>:=PolynomialRing(F);
+    P:=[];
+    w:=p^s-1;
+    w2:=p-1;
+    for f in [a*x^3 + b*x^2 + c*x + d : a in [1..w2], b in [0..w], c in [0..w], d in [0..w]] do
+        // f;
+        if Algorithm2(f, p, n, s) eq true then
+            P:=Append();
+        end if;
+    end for;
+    return P;
 end function;
