@@ -1,20 +1,42 @@
-load "/Users/leducanhminh/Desktop/ResearchProjectWithTori/Week 4/Helper_Functions.txt";
-load "/Users/leducanhminh/Desktop/ResearchProjectWithTori/Week 6-7/Algorithm1/Algorithm_v4.txt";
-load "/Users/leducanhminh/Desktop/ResearchProjectWithTori/Week 6-7/Algorithm1/Algorithm2v2.txt";
+// Functions used for testing the algorithm.
 
 function TestAllP(p, n, s)
+    /* 
+
+    Checks every cubic of the specific form a*x^3+b*x+c over a finite field and tells whether the checked cubics
+    are dynamically irreducible over a certain number of iterations. Print the results for every checked cubic ('true' if a cubic
+    is dynamically irreducible, 'false, i' if it fails to be D.I. at some i-th iteration).
+
+    Parameters:
+    p: a prime number of choice
+    n: the number of iterations to perform
+    s: the power of prime p
+
+    */
     F:=FiniteField(p^s);
     S<x>:=PolynomialRing(F);
     w:=p^s-1;
     for f in [x^3 + b*x + c : b in [0..w], c in [0..w]] do
-        // f;
+        // f; <- Uncomment this line to print the polynomials
         // Algorithm1v4(f, p, n, s);
         Algorithm2(f, p, n, s);
     end for;
-    return "end";
+    return "";
 end function;
 
 function TestAllPGen(p, n, s)
+    /*
+
+    Checks every cubic (not limited to those of a certain form) over a finite field and tells whether the checked cubics
+    are dynamically irreducible over a certain number of iterations. Print the results for every checked cubic ('true' if a cubic
+    is dynamically irreducible, 'false, i' if it fails to be D.I. at some i-th iteration).
+
+    Parameters:
+    p: a prime number of choice
+    n: the number of iterations to perform
+    s: the power of prime p
+
+    */
     F:=FiniteField(p^s);
     S<x>:=PolynomialRing(F);
     w:=p^s-1;
@@ -23,10 +45,24 @@ function TestAllPGen(p, n, s)
         // f;
         Algorithm2(f, p, n, s);
     end for;
-    return "end";
+    return "";
 end function;
 
 function DI_TestAllPGen(p, n, s)
+    /* 
+    
+    Checks every cubic (not limited to those of a certain form) over a finite field and stores 
+    cubics that are found to be dynamically irreducible over a certain number of iterations in a list.
+
+    Parameters:
+    p: a prime number of choice
+    n: the number of iterations to perform
+    s: the power of prime p
+
+    Returns:
+    P: List of found potentially dynamically irreducible cubics
+
+    */
     F:=FiniteField(p^s);
     S<x>:=PolynomialRing(F);
     P:=[];
