@@ -1,12 +1,21 @@
 # An Algorithm for Determining the Dynamical Irreducibility of Cubic Polynomials over Finite Fields
 
-## Description/About
+
+## Table of Contents
+
+  - [Description](#description)
+  - [Using the Algorithm](#using-the-algorithm)
+  - [Reflections](#reflections)
+  - [Acknowledgement](#acknowledgement)
+  - [Reference](#reference)
+
+## Description
 
 **Tech used:** Magma
 
 This algorithm was developed as part of the research project on Dynamical Irreducibiilty of Polynomials over Finite Fields at Mount Holyoke College, done under the mentorship of Professor Tori Day.
 
-It is used for determining if a cubic polynomial of the form f(x)=ax^3+bx^2+cx+d is dynamically irreducible over a given finite field of order q (q being a prime or prime power), and is based on a Sage algorithm for determining the dynamically irreducibility of polynomials of the form f(x)=ax^3+cx+d (Day, Deland, Juul, Thomas, Thompson, Tobin).
+It is used for determining if a cubic polynomial of the form f(x) = ax^3 + bx^2 + cx + d is dynamically irreducible over a given finite field of order q (q being a prime or prime power), and is based on a Sage algorithm for determining the dynamically irreducibility of polynomials of the form f(x) = ax^3 + cx + d (Day, Deland, Juul, Thomas, Thompson, Tobin).
 
 ## Using the Algorithm
 
@@ -38,11 +47,18 @@ Algorithm2(f, 7, 5, 1);
 
 Through this project, I was involved in math research for the first time - which led to a series of other first-times: learning Magma, presenting about out research at MHC math lunch, and finding out how fun math can be!
 
-The research process was a great learning opportunity. Beyond abstract algebra and Magma, I learned how to be patient with myself. Weeks of reading theories, coding, testing, debugging had led me out of my comfort zone, step by step. I practiced breaking down into pieces a problem that seemed daunting at first sight, and solving it piece by piece. Then I learned how to tackle problems calmly and confidently - by letting myself take time, and believing there is a solution waiting to be found. I learned to voice my questions and concerns - and was truly grateful to be among great people who are willing to give me support and guidance.
+The research process was a great learning opportunity. Beyond abstract algebra and Magma, I learned how to be patient with myself. Weeks of reading theories, coding, testing, debugging had led me out of my comfort zone, step by step.
+
+* I practiced breaking down into pieces a problem that seemed daunting at first sight, and solving it piece by piece.
+* I found two new tools for tackling problems: composure and confidence. A lot of times, bugs that were confusing at first can be fixed by letting myself take time, and believing there was a solution to be found.
+* I learned to voice my questions and concerns - and was truly grateful to be among great people who are willing to give me support and guidance ☺️
 
 ## Acknowledgement
 
-I want to thank my mentor, Professor Tori Day, for giving me the opportunity to be involved in this project. I learned a lot from your knowledgeableness, enthusiasm and patience.
+I also want to thank Professors Tony Liu and Chassidy Bozeman, whom I took Data Structures and Discrete Math with. The coding and proofwriting skills I learned from your classes proved useful in this project!
+
+Lastly, I want to thank my mentor, Professor Tori Day, for giving me the opportunity to be involved in this project. I learned a lot from your knowledgeableness, enthusiasm and patience.
+
 
 ## Reference
 
