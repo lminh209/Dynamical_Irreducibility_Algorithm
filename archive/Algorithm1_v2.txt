@@ -1,0 +1,47 @@
+// Takes in: function h = x^3+bx+c, prime p, number of iterates n
+// Returns: true if h is dynamically irreducible, otherwise returns false and the number of iterate where it fails to be
+
+function Algorithm1v2(h, p, n)
+    F:=FiniteField(p);
+    P<x>:=PolynomialRing(F);
+    g:=x;
+    count:=1;
+    S:=SquareList(p); // create a list of squares in F
+    C:=CubeList(p); // create a list of cubes in F
+    b0:=Coefficient(h, 0);
+    b1:=Coefficient(h, 1);
+    m_3:=F!-3;
+    sqrt_minus_3:=Sqrt(m_3);
+    if IsIrreducible(h) eq false then
+        return false, 1;
+    else
+        g:=Evaluate(h,g);
+        count:=count+1;
+        for i in [2..n] do
+            // setup
+            K<b>:=ext<F|g>;
+            // b1:=K!b1;
+            // b0:=K!b0;
+            square_check_obj:= -4*b1^3-27*(b0-b)^2;
+
+            // check Condition 1 of Theorem 17
+            if IsSquareFp(Norm(square_check_obj), S) eq true then
+                mu:=SquareRoot(square_check_obj/81);
+                cube_check_obj:=(1/2)*(-(b0-b)+mu*sqrt_minus_3);
+
+                // check Condition 2 of Proposition 2
+                if IsCubeFp(Norm(cube_check_obj), C) eq false then
+                    g:=Evaluate(h,g);
+                    count:=count+1;
+                else
+                    return false, i;
+                    break;
+                end if;
+            else 
+                return false, i;
+                break;
+            end if;
+        end for;
+    end if;
+    return true;
+end function;
