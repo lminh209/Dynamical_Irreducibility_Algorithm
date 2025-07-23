@@ -22,7 +22,8 @@ It is used for determining if a cubic polynomial of the form f(x) = ax^3 + bx^2 
 
 Here is a brief guide for navigating through the repository.
 
-* In the [algorithm_versions](https://github.com/lminh209/Algorithm1/tree/main/algorithm_versions) folder, you will find the code for the algorithm and its helper functions.
+* In the [algorithm_versions](https://github.com/lminh209/Algorithm1/tree/main/algorithm_versions) folder, you will find the code for the algorithm (Algorithm2_v2) and its helper functions.
+* The archive folder contains the older versions of the algorithm. (updated soon)
 * In the [test](https://github.com/lminh209/Algorithm1/tree/main/test) folder, you will find some functions for performing automated tests on the algorithm.
 
 ## Using the Algorithm
