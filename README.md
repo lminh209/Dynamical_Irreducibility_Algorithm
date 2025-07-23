@@ -69,7 +69,7 @@ I would like to express my gratitude for Mount Holyoke College's Math/Stat/Data 
 
 I also want to thank Professors Tony Liu and Chassidy Bozeman, whom I took Data Structures and Discrete Math with. The coding and proofwriting skills I learned from your classes proved useful in this project!
 
-Lastly, I want to thank my mentor, Professor Tori Day, for giving me the opportunity to be involved in the project and . I learned a lot from your knowledgeableness, enthusiasm and patience.
+Lastly, I want to thank my mentor, Professor Tori Day, for your guidance throughout this project. I learned a lot from your knowledgeableness, enthusiasm and patience.
 
 ## Reference
 
