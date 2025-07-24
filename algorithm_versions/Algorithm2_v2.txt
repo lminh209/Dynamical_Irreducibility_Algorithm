@@ -37,10 +37,11 @@ function Algorithm2(f, p, n, s)
         else
             g:=x;
             if IsIrreducible(h) eq false then
-                return false, 1;
+                return ["false", "1"];
             else
                 g:=Evaluate(h,g);
                 for i in [2..n] do
+                    i_str:=IntegerToString(i);
                     // Apply conditions of Proposition 2
                     // Setup
                     beta_0:=F!0; 
@@ -69,7 +70,7 @@ function Algorithm2(f, p, n, s)
                         end if;
                     end if;
                     if (q mod 3) eq 1 then
-                        K<b>:=ext<F|g>;
+                        K<b>:=ext<F|g>; // find beta_n (b)
                         m_3:=F!-3;
                         sqrt_minus_3:=Sqrt(m_3);
                         g_nextit:=Evaluate(h,g); // find (i+1)-th iterate
@@ -92,10 +93,10 @@ function Algorithm2(f, p, n, s)
                             if cube_check_obj notin Cb then
                                 g:=Evaluate(h,g);
                             else
-                                return false, i;
+                                return ["false", i_str];
                             end if;
                         else
-                            return false, i;
+                            return ["false", i_str];
                         end if;
                         
                     elif (q mod 3) eq 2 then
@@ -126,10 +127,10 @@ function Algorithm2(f, p, n, s)
                             if cube_check_obj notin Cb then
                                 g:=Evaluate(h,g);
                             else
-                                return false, i;
+                                return ["false", i_str];
                             end if;
                         else
-                            return false, i;
+                            return ["false", i_str];
                         end if;
                     end if; 
                 end for;
