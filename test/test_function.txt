@@ -42,7 +42,7 @@ function TestAllPGen(p, n, s)
     w:=p^s-1;
     w2:=p-1;
     for f in [a*x^3 + b*x^2 + c*x + d : a in [1..w2], b in [0..w], c in [0..w], d in [0..w]] do
-        // f;
+        f;
         Algorithm2(f, p, n, s);
     end for;
     return "";
