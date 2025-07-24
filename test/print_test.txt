@@ -1,0 +1,28 @@
+function TestAndPrintAllPGen(p, n, s, filename)
+    /*
+
+    Checks every cubic (not limited to those of a certain form) over a finite field and tells whether the checked cubics
+    are dynamically irreducible over a certain number of iterations. Print the results for every checked cubic ('true' if a cubic
+    is dynamically irreducible, 'false, i' if it fails to be D.I. at some i-th iteration).
+
+    Parameters:
+    p: a prime number of choice
+    n: the number of iterations to perform
+    s: the power of prime p
+
+    */
+    // SetOutputFile(filename);
+    F:=FiniteField(p^s);
+    S<x>:=PolynomialRing(F);
+    w:=p^s-1;
+    w2:=p-1;
+    for f in [a*x^3 + b*x^2 + c*x + d : a in [1..w2], b in [0..w], c in [0..w], d in [0..w]] do
+        Write(filename,f);
+        Write(filename,Algorithm2(f, p, n, s));
+        // Write(filename,f*","*Algorithm2(f, p, n, s));
+        // printf f, ",", Algorithm2(f, p, n, s), "\n";
+        // res:=[f, Algorithm2(f, p, n, s)];
+        // Write(filename, res);
+    end for;
+    return "";
+end function;
