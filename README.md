@@ -65,9 +65,15 @@ The research process was a great learning opportunity. Through weeks of reading 
 
 ## Acknowledgement
 
-I would like to express my gratitude for Mount Holyoke College's Math/Stat/Data Department for supporting this summer research project.
+I would like to extend my gratitude to the following groups of people:
 
-I also want to thank Professors Tony Liu and Chassidy Bozeman, whom I took Data Structures and Discrete Math with. The coding and proofwriting skills I learned from your classes proved useful in this project!
+First, Mount Holyoke College's Math/Stat/Data Department - for supporting this summer research project.
+
+Second, Professors Tony Liu and Chassidy Bozeman, whom I took Data Structures and Discrete Math with. The coding and proofwriting skills I learned from your classes proved useful in this project!
+
+Third, my naginata seniors Pemily, Viktoria and Gráinne.
+
+Fourth, my friend and trusted proofreader Định.
 
 Lastly, I want to thank my mentor, Professor Tori Day, for your guidance throughout this project. I learned a lot from your knowledgeableness, enthusiasm and patience.
 
